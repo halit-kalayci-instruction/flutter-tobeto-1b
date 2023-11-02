@@ -1,39 +1,23 @@
 import 'package:flutter/material.dart';
 
-// auto execute
 void main() {
-  // flutter'ı initialize eden runApp
-
-  // Widget => en küçükten en büyüğe giden şablonlar
-
-  // named & unnamed parameters
-
-  // constant
-  runApp(
-    const MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 57, 7, 96), // Configuration Widget
-        body: Center(
-          child: Text("Merhaba Tobeto",
-              style: TextStyle(fontSize: 38, color: Colors.white)),
-        ),
-      ),
-    ),
-  );
+  runApp(const MaterialApp(home: HomeScreen()));
 }
 
-// resminiz => Flutter uygulamasına resim eklenmesi
-// İsim Soyisim
-// Tobeto - Mobil Geliştirme - 1B
-// Günün tarihi (statik) 31.10.2023
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key}); // 1. gereksinim
 
-// intelisense => ctrl + space 
-// mac => cmnd + i
-
-
-// SHIFT + ALT + F
-// sağ tık - format document
-
-
-// Stateless => UI
-// Stateful => Dynamic UI
+  // 2. gereksinim
+  // Hot Reload => Restarta gerek kalmadan (spesifik durumlar hariç)
+  // değişikliklerin görünmesi.
+  Widget build(BuildContext buildContext) {
+    return const Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text("Quiz App"), Text("Deneme")],
+        ),
+      ),
+    );
+  }
+}
