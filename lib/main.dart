@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:introapp/data/questions.dart';
 
 void main() {
-  runApp(const MaterialApp(home: HomeScreen()));
+  runApp(const MaterialApp(home: QuizScreen()));
 }
 
 // boilerplate => basmakalıp
 class HomeScreen extends StatelessWidget {
-  String text = "Merhaba";
   const HomeScreen({super.key}); // 1. gereksinim
-
-  void changeText() {
-    text = "Text değişti";
-  }
 
   // 2. gereksinim
   // Hot Reload => Restarta gerek kalmadan (spesifik durumlar hariç)
@@ -30,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             ),
             // Image.network(
             //     "https://miro.medium.com/v2/resize:fit:720/format:webp/1*FBRsnCP9wE84UVW1Kkv5Yw.jpeg"),
-            Text(text,
+            const Text("Quiz App",
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -69,11 +65,31 @@ class QuizScreen extends StatefulWidget {
 
 // _State
 class _QuizState extends State<QuizScreen> {
+  String text = "Aşağıdakilerden hangisi bir widget türüdür";
+
+  void changeText() {
+    setState(() {
+      text = "Yeni Değer";
+    });
+  }
+
   @override
   Widget build(BuildContext buildContext) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("Merhaba, Quiz ekranı"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(questions[0].question),
+            ...questions[0].answers.map((answer) {
+              return ElevatedButton(
+                  onPressed: () {
+                    changeText();
+                  },
+                  child: Text(answer));
+            })
+          ],
+        ),
       ),
     );
   }
