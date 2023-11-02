@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   // değişikliklerin görünmesi.
   Widget build(BuildContext buildContext) {
     return Scaffold(
+      backgroundColor: Colors.deepPurpleAccent,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
