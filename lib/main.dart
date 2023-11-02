@@ -11,11 +11,18 @@ class HomeScreen extends StatelessWidget {
   // Hot Reload => Restarta gerek kalmadan (spesifik durumlar hariç)
   // değişikliklerin görünmesi.
   Widget build(BuildContext buildContext) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("Quiz App"), Text("Deneme")],
+          children: [
+            // asset
+            Image.asset("assets/images/quiz-logo.png"),
+            // Image.network(
+            //     "https://miro.medium.com/v2/resize:fit:720/format:webp/1*FBRsnCP9wE84UVW1Kkv5Yw.jpeg"),
+            const Text("Quiz App"),
+            const Text("Deneme")
+          ],
         ),
       ),
     );
