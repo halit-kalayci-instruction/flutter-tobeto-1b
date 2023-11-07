@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen(this.onStartButtonPressed, {super.key}); // 1. gereksinim
-  final void Function() onStartButtonPressed;
+  final void Function()
+      onStartButtonPressed; // classin içinden bu alanı kullanabilmek
   // 2. gereksinim
   // Hot Reload => Restarta gerek kalmadan (spesifik durumlar hariç)
   // değişikliklerin görünmesi.
+
+  // StatelessWidget build fonksiyonu sadece 1 kere çağırılır (ekran yüklenirken)
   Widget build(BuildContext buildContext) {
     return Scaffold(
       backgroundColor: Colors.deepPurpleAccent,
