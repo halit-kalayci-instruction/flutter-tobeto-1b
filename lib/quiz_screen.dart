@@ -15,9 +15,14 @@ class _QuizState extends State<QuizScreen> {
 
   void changeQuestion() {
     setState(() {
-      selectedQuestionIndex++;
+      if (questions.length - 1 > selectedQuestionIndex)
+        selectedQuestionIndex++;
+      else {
+        // Quizi bitirme
+      }
     });
   }
+  //14:00
 
   @override
   Widget build(BuildContext buildContext) {
