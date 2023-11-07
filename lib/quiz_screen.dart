@@ -11,11 +11,11 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizState extends State<QuizScreen> {
-  String text = "Aşağıdakilerden hangisi bir widget türüdür";
+  int selectedQuestionIndex = 0;
 
-  void changeText() {
+  void changeQuestion() {
     setState(() {
-      text = "Yeni Değer";
+      selectedQuestionIndex++;
     });
   }
 
@@ -29,11 +29,11 @@ class _QuizState extends State<QuizScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(questions[0].question),
-              ...questions[0].answers.map((answer) {
+              Text(questions[selectedQuestionIndex].question),
+              ...questions[selectedQuestionIndex].answers.map((answer) {
                 return ElevatedButton(
                     onPressed: () {
-                      changeText();
+                      changeQuestion();
                     },
                     child: Text(answer));
               })
