@@ -10,6 +10,7 @@ class QuizScreen extends StatefulWidget {
   }
 }
 
+// navigator
 class _QuizState extends State<QuizScreen> {
   int selectedQuestionIndex = 0;
 
@@ -22,7 +23,6 @@ class _QuizState extends State<QuizScreen> {
       }
     });
   }
-  //14:00
 
   @override
   Widget build(BuildContext buildContext) {
