@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:introapp/data/questions.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  // named argument
+
+  // default argumentlar required olarak gelir
+  // named argumentlar required olarak gelmez, gerektiğinde işaretlenmesi gerekir.
+  const QuizScreen({super.key, required this.chooseAnswer});
+  final void Function(String answer) chooseAnswer;
 
   @override
   State<QuizScreen> createState() {
@@ -38,6 +43,7 @@ class _QuizState extends State<QuizScreen> {
               ...questions[selectedQuestionIndex].answers.map((answer) {
                 return ElevatedButton(
                     onPressed: () {
+                      widget.chooseAnswer(answer);
                       changeQuestion();
                     },
                     child: Text(answer));
@@ -49,3 +55,11 @@ class _QuizState extends State<QuizScreen> {
     );
   }
 }
+
+// en az 10 adet flutter ile alaklı soru eklenecek
+// result_screen.dart
+// Soruları bitirdiğinde bu ekrana yönlendirilecek
+// EKSTRA: Cevaplar hafızada tutulacak ve kullanıcıya kendi cevapları listelenecek
+// EKSTRA 2: Kaç adet doğru kaç adet yanlış cevap verdi.
+// (Liste widget)
+

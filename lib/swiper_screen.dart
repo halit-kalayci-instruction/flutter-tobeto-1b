@@ -11,12 +11,20 @@ class SwiperScreen extends StatefulWidget {
 
 // callback function
 class _SwiperScreenState extends State<SwiperScreen> {
-  String activeScreenName = "home-screen";
+  String activeScreenName = "home-screen"; //hafızada tutulan bir değişken
+  List<String> userAnswers = [];
 
   void goToQuiz() {
+    // hafızadaki değeri değiştiren fonksiyon
     setState(() {
       activeScreenName = "quiz-screen";
     });
+  }
+
+  void addAnswer(String answer) {
+    userAnswers.add(answer);
+    print("Listeye yeni cevap eklendi:");
+    print(userAnswers);
   }
 
   // StatefullWidget setState her yapıldığında build fonksiyonunu yeniden çalıştırır.
@@ -24,7 +32,11 @@ class _SwiperScreenState extends State<SwiperScreen> {
   Widget build(BuildContext context) {
     Widget activeScreen = HomeScreen(goToQuiz); //
 
-    if (activeScreenName == "quiz-screen") activeScreen = QuizScreen();
+    if (activeScreenName == "quiz-screen") {
+      activeScreen = QuizScreen(
+        chooseAnswer: (answer) => addAnswer(answer),
+      );
+    }
 
     return Container(
       child: activeScreen,
